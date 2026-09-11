@@ -60,7 +60,7 @@ Multi-agent system that lets data scientists find ML features by asking question
 Tech: Databricks, Agent Bricks, LangGraph, Genie, Unity Catalog, Python
 
 **AI test-generation agents**
-Two GitHub Copilot agent plugins: one turns Jira stories and source-to-target mapping specs into data-engineering test cases; the second turns those test cases into runnable Databricks test notebooks. Integrates Jira through MCP with OAuth.
+Four GitHub Copilot agent plugins: one turns Jira stories and source-to-target mapping specs into data-engineering test cases; the second turns those test cases into runnable Databricks test notebooks. Integrates Jira through MCP with OAuth. The third one gets all the source artifacts by providing a github repo. Fourth one creates a Change Request Review for the Change Advisory Board of Data Analytics Production Implementations. This agent reviews the Change Request against the rules and notifies the leaders if the change is good for production implementation or not. Opens ServiceNow, connects with Confluence to give a score out of 100.
 Tech: GitHub Copilot agents, MCP, Python, Databricks
 
 **Geospatial boundary ingestion pipeline**
@@ -70,6 +70,11 @@ Tech: Databricks, Spatial SQL, GeoPandas, PySpark
 **Data platform migration and ML pipelines**
 Moved ML feature pipelines from on-prem Oracle and DB2 to ADLS and Snowflake, including PySpark change-tracking (CDC) logic. Tuned Spark transformations supporting production deployment of 8+ ML models. Contributed to a feature store and a conversational data-governance tool, and set up data quality monitoring (schema anomaly detection, time-series profiling).
 Tech: PySpark, Azure Databricks, ADLS, Snowflake, Delta Lake, Unity Catalog
+
+**Data Feature Products for Data Science Team**
+Built pipelines for data science team using aggregated logics for the Machine Learning models. The models help the Financial Advisors in the Firm to target their clients. Features are highly curated helping in communicating with end clients. 
+Tech: Databricks PySpark, Snowflake, SQL, MLFlow
+
 
 ### Side projects (public — featured)
 
