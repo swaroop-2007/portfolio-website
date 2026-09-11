@@ -1,4 +1,5 @@
 import { Hero } from "@/components/hero/Hero";
+import { LineageProvider } from "@/components/hero/LineageProvider";
 import { SelectedWork } from "@/components/sections/SelectedWork";
 import { SideProjects } from "@/components/sections/SideProjects";
 import { Experience } from "@/components/sections/Experience";
@@ -10,14 +11,16 @@ import { Archive } from "@/components/sections/Archive";
 export default function Home() {
   return (
     <main className="mx-auto w-full max-w-[1120px] px-4 md:px-6">
-      <Hero />
-      <SelectedWork />
-      <SideProjects />
-      <Experience />
-      <SkillsAndCerts />
-      <EducationAndPublication />
-      <Contact />
-      <Archive />
+      <LineageProvider>
+        <Hero />
+        <SelectedWork />
+        <SideProjects />
+        <Experience />
+        <SkillsAndCerts />
+        <EducationAndPublication />
+        <Contact />
+        <Archive />
+      </LineageProvider>
     </main>
   );
 }
