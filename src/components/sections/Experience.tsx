@@ -15,6 +15,7 @@ export function Experience() {
               </h3>
               <span className="font-mono text-xs text-ink/50 shrink-0">
                 {entry.dateRange}
+                {entry.location ? ` · ${entry.location}` : ""}
               </span>
             </div>
             <ul className="mt-3 flex flex-col gap-1.5 max-w-[68ch] text-ink/80">

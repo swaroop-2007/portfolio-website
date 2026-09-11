@@ -20,6 +20,7 @@ export interface ExperienceEntry {
   company: string;
   role: string;
   dateRange: string;
+  location?: string;
   bullets: string[];
   current?: boolean;
 }

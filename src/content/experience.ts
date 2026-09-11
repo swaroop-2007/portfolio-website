@@ -4,7 +4,7 @@ export const experience: ExperienceEntry[] = [
   {
     id: "wipro",
     company: "Wipro Ltd",
-    role: "Consultant / Technical Analyst",
+    role: "Technical Consultant / AI Engineer",
     dateRange: "Mar 2025 – present",
     current: true,
     bullets: [
@@ -13,13 +13,27 @@ export const experience: ExperienceEntry[] = [
     ],
   },
   {
+    id: "navhub-ai",
+    company: "NavHub AI",
+    role: "Founding Data Scientist",
+    dateRange: "Nov 2024 – present",
+    location: "New York, US",
+    current: true,
+    bullets: [
+      "Architected a full-stack analytics platform combining product metrics with NLP-driven insights.",
+      "Led A/B testing and defined PMF KPIs, helping validate product-market fit 30% faster.",
+      "Applied NLP to 10,000+ user interactions to surface behavior patterns that shaped product strategy.",
+    ],
+  },
+  {
     id: "one-community-global",
     company: "One Community Global",
-    role: "Data Analyst",
+    role: "Software Engineer",
     dateRange: "TODO: dates",
     bullets: [
-      "SEO and search-trend analysis (+25% traffic, +15% CTR).",
-      "Led a team of 10+.",
+      "Resolved 5+ critical bugs (memory leaks, state management, rendering) by enforcing best practices with Prettier and building Jest unit and integration tests.",
+      "Built interactive dashboards with Chart.js and D3.js, improving data visibility for 500+ users.",
+      "Reviewed 50+ PRs to raise code quality (−15% post-deployment bugs); led a team of 10+ and helped recruiting cut time-to-fill by 20%.",
     ],
   },
   {
