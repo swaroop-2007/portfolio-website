@@ -1,0 +1,19 @@
+import { profile } from "@/content/profile";
+import { SectionHeading } from "@/components/ui/SectionHeading";
+import { ExternalLink } from "@/components/ui/ExternalLink";
+
+export function Contact() {
+  return (
+    <section id="contact" className="py-16 md:py-24">
+      <SectionHeading title="Contact" />
+      <div className="flex flex-col gap-2 text-lg">
+        <ExternalLink href={`mailto:${profile.links.email}`}>
+          {profile.links.email}
+        </ExternalLink>
+        <ExternalLink href={profile.links.linkedin}>LinkedIn</ExternalLink>
+        <ExternalLink href={profile.links.github}>GitHub</ExternalLink>
+        <ExternalLink href={profile.links.resumeHref}>Resume (PDF)</ExternalLink>
+      </div>
+    </section>
+  );
+}
