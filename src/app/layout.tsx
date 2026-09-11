@@ -18,14 +18,22 @@ const title = "Swaroop Udgaonkar — Data and AI engineer";
 const description =
   "Data and AI engineer. I turn business questions into production ML pipelines and AI agents.";
 
+// TODO: replace with the real production domain once deployed to Vercel.
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://swaroopudgaonkar.example.com";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title,
   description,
   openGraph: {
     title,
     description,
     type: "website",
-    // TODO: openGraph.images — generate an OG image (polish milestone)
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
   },
 };
 

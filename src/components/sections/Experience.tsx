@@ -13,7 +13,7 @@ export function Experience() {
                 {entry.company}
                 <span className="font-normal text-ink/70"> — {entry.role}</span>
               </h3>
-              <span className="font-mono text-xs text-ink/50 shrink-0">
+              <span className="font-mono text-xs text-ink/65 shrink-0">
                 {entry.dateRange}
                 {entry.location ? ` · ${entry.location}` : ""}
               </span>

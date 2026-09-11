@@ -14,7 +14,7 @@ export function Archive() {
           >
             <span className="font-semibold shrink-0">{item.title}</span>
             {item.date ? (
-              <span className="font-mono text-xs text-ink/50 shrink-0">{item.date}</span>
+              <span className="font-mono text-xs text-ink/65 shrink-0">{item.date}</span>
             ) : null}
             <span className="text-ink/70">{item.description}</span>
           </li>

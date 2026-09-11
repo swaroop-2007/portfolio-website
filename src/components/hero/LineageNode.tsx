@@ -40,7 +40,7 @@ export function LineageNode({
     >
       <div className="text-sm font-semibold leading-snug">{node.label}</div>
       {node.sublabel ? (
-        <div className="font-mono text-[0.6875rem] text-ink/60 mt-0.5">{node.sublabel}</div>
+        <div className="font-mono text-[0.6875rem] text-ink/70 mt-0.5">{node.sublabel}</div>
       ) : null}
     </a>
   );

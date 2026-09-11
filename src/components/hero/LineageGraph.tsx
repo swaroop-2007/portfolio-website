@@ -117,7 +117,7 @@ export function LineageGraph() {
 
       {STAGES.map((stage) => (
         <div key={stage.key} className="relative flex flex-col gap-3">
-          <h2 className="font-mono text-xs text-ink/50">{stage.label}</h2>
+          <h2 className="font-mono text-xs text-ink/65">{stage.label}</h2>
           <div className="flex flex-col gap-3">
             {lineageNodes
               .filter((node) => node.stage === stage.key)

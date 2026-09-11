@@ -10,7 +10,7 @@ export function Hero() {
           <h1 className="text-4xl md:text-[3.5rem] font-bold tracking-tight leading-[1.05]">
             {profile.name}
           </h1>
-          <p className="font-mono text-xs text-ink/50 mt-2">{profile.location}</p>
+          <p className="font-mono text-xs text-ink/65 mt-2">{profile.location}</p>
         </div>
         <nav aria-label="Primary links" className="flex flex-wrap gap-x-4 gap-y-1 text-sm shrink-0">
           <ExternalLink href={profile.links.github}>GitHub</ExternalLink>
