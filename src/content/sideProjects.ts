@@ -11,15 +11,6 @@ export const sideProjects: SideProject[] = [
     todos: ["repo link", "live link", "screenshot"],
   },
   {
-    id: "addvie-logistics",
-    title: "Addvie Logistics website",
-    description:
-      "Front end for a logistics company: responsive layout, cross-browser support, interactive UI components.",
-    tech: ["HTML/CSS", "JavaScript"],
-    links: {},
-    todos: ["live URL", "screenshot"],
-  },
-  {
     id: "gpt-stock-market-analysis",
     title: "GPT for Stock Market Analysis",
     date: "Nov 2023",

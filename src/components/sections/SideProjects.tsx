@@ -17,14 +17,7 @@ export function SideProjects() {
           >
             <div className="flex items-start gap-3">
               <span aria-hidden className="mt-2.5 size-2 shrink-0 rounded-full bg-ink/40" />
-              <h3 className="text-lg font-semibold">
-                {project.title}
-                {project.date ? (
-                  <span className="ml-2 font-mono text-xs uppercase tracking-wider font-normal text-ink/65">
-                    {project.date}
-                  </span>
-                ) : null}
-              </h3>
+              <h3 className="text-lg font-semibold">{project.title}</h3>
             </div>
             <p className="max-w-[68ch] text-ink/80 pl-5">{project.description}</p>
             <div className="flex flex-wrap gap-2 pl-5">

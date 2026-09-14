@@ -1,8 +1,19 @@
 "use client";
 
 import { createContext, useContext, useMemo, useState, type ReactNode } from "react";
-import { lineageEdges } from "@/content/lineage";
+import { lineageEdges, lineageNodes } from "@/content/lineage";
 import type { LineageEdge } from "@/lib/types";
+
+/**
+ * A served-stage lineage node maps to one or more Selected work rows via
+ * `tags` (falling back to the node's own id when a node represents exactly
+ * one project, e.g. "feature-discovery-agent").
+ */
+function projectIdsForNode(nodeId: string): string[] {
+  const node = lineageNodes.find((n) => n.id === nodeId);
+  if (!node) return [nodeId];
+  return node.tags && node.tags.length > 0 ? node.tags : [nodeId];
+}
 
 interface Traversal {
   nodes: Set<string>;
@@ -46,6 +57,8 @@ interface LineageHighlightValue {
   /** the active node plus every node reachable upstream/downstream from it */
   connectedNodeIds: Set<string>;
   connectedEdgeKeys: Set<string>;
+  /** Selected work project ids the connected served nodes map to */
+  activeProjectIds: Set<string>;
 }
 
 const LineageHighlightContext = createContext<LineageHighlightValue | null>(null);
@@ -53,15 +66,20 @@ const LineageHighlightContext = createContext<LineageHighlightValue | null>(null
 export function LineageProvider({ children }: { children: ReactNode }) {
   const [activeNodeId, setActiveNodeId] = useState<string | null>(null);
 
-  const { connectedNodeIds, connectedEdgeKeys } = useMemo(() => {
+  const { connectedNodeIds, connectedEdgeKeys, activeProjectIds } = useMemo(() => {
     if (!activeNodeId) {
-      return { connectedNodeIds: new Set<string>(), connectedEdgeKeys: new Set<string>() };
+      return {
+        connectedNodeIds: new Set<string>(),
+        connectedEdgeKeys: new Set<string>(),
+        activeProjectIds: new Set<string>(),
+      };
     }
     const up = traverse(activeNodeId, "up");
     const down = traverse(activeNodeId, "down");
     const nodes = new Set([activeNodeId, ...up.nodes, ...down.nodes]);
     const edgeKeys = new Set([...up.edgeKeys, ...down.edgeKeys]);
-    return { connectedNodeIds: nodes, connectedEdgeKeys: edgeKeys };
+    const projectIds = new Set(Array.from(nodes).flatMap(projectIdsForNode));
+    return { connectedNodeIds: nodes, connectedEdgeKeys: edgeKeys, activeProjectIds: projectIds };
   }, [activeNodeId]);
 
   const value: LineageHighlightValue = {
@@ -69,6 +87,7 @@ export function LineageProvider({ children }: { children: ReactNode }) {
     setActiveNodeId,
     connectedNodeIds,
     connectedEdgeKeys,
+    activeProjectIds,
   };
 
   return (

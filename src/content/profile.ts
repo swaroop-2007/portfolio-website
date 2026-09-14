@@ -2,10 +2,10 @@ import type { Profile } from "@/lib/types";
 
 export const profile: Profile = {
   name: "Swaroop Udgaonkar",
-  location: "New Jersey, US",
+  location: "New York, US",
   positioningLine:
     "Data and AI engineer. I turn business questions into production ML pipelines and AI agents.",
-  bio: "Technical Consultant / AI Engineer at Wipro, working on-site with a financial services client on Azure Databricks, PySpark, and Unity Catalog. Builds curated data marts, feature stores, and ML pipelines behind wealth-management models, and has been building agentic AI tools on top of them. MS in Computer Science from UT Dallas.",
+  bio: "AI Consultant at Wipro, working on-site with a financial services client on Azure Databricks, PySpark, and Unity Catalog. Builds curated data marts, feature stores, and ML pipelines behind wealth-management models, and has been building agentic AI tools on top of them. MS in Computer Science from UT Dallas.",
   links: {
     github: "https://github.com/swaroop-2007",
     linkedin: "https://www.linkedin.com/in/swaroopudgaonkar/",

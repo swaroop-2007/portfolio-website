@@ -7,7 +7,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { useLineageHighlight } from "@/components/hero/LineageProvider";
 
 export function SelectedWork() {
-  const { activeNodeId, connectedNodeIds } = useLineageHighlight();
+  const { activeNodeId, activeProjectIds } = useLineageHighlight();
 
   return (
     <section id="selected-work" className="py-16 md:py-24">
@@ -17,7 +17,7 @@ export function SelectedWork() {
       />
       <div className="border-t border-ink/10">
         {selectedWork.map((project, index) => {
-          const isConnected = !activeNodeId || connectedNodeIds.has(project.id);
+          const isConnected = !activeNodeId || activeProjectIds.has(project.id);
           return (
             <Reveal
               key={project.id}
@@ -28,7 +28,7 @@ export function SelectedWork() {
                 data-lineage-id={project.id}
                 className={`flex flex-col gap-3 transition-[opacity,background-color] ${
                   isConnected ? "opacity-100" : "opacity-40"
-                } ${activeNodeId && connectedNodeIds.has(project.id) ? "bg-served/6" : ""}`}
+                } ${activeNodeId && activeProjectIds.has(project.id) ? "bg-served/6" : ""}`}
               >
                 <div className="flex items-start gap-3">
                   <span

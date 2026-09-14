@@ -4,7 +4,7 @@ export const experience: ExperienceEntry[] = [
   {
     id: "wipro",
     company: "Wipro Ltd",
-    role: "Technical Consultant / AI Engineer",
+    role: "AI Consultant",
     dateRange: "Mar 2025 – present",
     current: true,
     bullets: [
@@ -15,11 +15,12 @@ export const experience: ExperienceEntry[] = [
   {
     id: "navhub-ai",
     company: "NavHub AI",
-    role: "Founding Data Scientist",
+    role: "Founding Engineer",
     dateRange: "Nov 2024 – present",
     location: "New York, US",
     current: true,
     bullets: [
+      "Set up the product and business strategy that landed the company in the top 5% of its YC batch.",
       "Architected a full-stack analytics platform combining product metrics with NLP-driven insights.",
       "Led A/B testing and defined PMF KPIs, helping validate product-market fit 30% faster.",
       "Applied NLP to 10,000+ user interactions to surface behavior patterns that shaped product strategy.",

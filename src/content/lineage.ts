@@ -22,7 +22,7 @@ export const lineageNodes: LineageNode[] = [
   {
     id: "early-roles",
     stage: "source",
-    label: "Early analyst roles",
+    label: "Early experience",
     sublabel: "Hodek Edge · Feynn Labs · One Community Global",
     sectionId: "experience",
   },
@@ -54,7 +54,12 @@ export const lineageNodes: LineageNode[] = [
     stage: "served",
     label: "AI test-generation agents",
     sectionId: "selected-work",
-    tags: ["ai-test-generation-agents"],
+    tags: [
+      "test-case-generator-agent",
+      "test-notebook-generator-agent",
+      "repo-artifact-agent",
+      "change-review-agent",
+    ],
   },
   {
     id: "geospatial-boundary-ingestion",

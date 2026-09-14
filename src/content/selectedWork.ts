@@ -1,6 +1,6 @@
 import type { SelectedWorkProject } from "@/lib/types";
 
-// TODO: the "AI test-generation agents" description below was reworded to drop
+// TODO: the "change-review-agent" description below was reworded to drop
 // the internal board/process name from CLAUDE.md ("Change Advisory Board of
 // Data Analytics Production Implementations") per the confidentiality hard
 // rule (no internal team names). Please confirm the generic wording is
@@ -14,11 +14,32 @@ export const selectedWork: SelectedWorkProject[] = [
     tech: ["Databricks", "Agent Bricks", "LangGraph", "Genie", "Unity Catalog", "Python"],
   },
   {
-    id: "ai-test-generation-agents",
-    title: "AI test-generation agents",
+    id: "test-case-generator-agent",
+    title: "Test case generator agent",
     description:
-      "Four GitHub Copilot agent plugins for data-engineering test coverage. The first turns Jira stories and source-to-target mapping specs into test cases; the second turns those test cases into runnable Databricks test notebooks; the third assembles the same source artifacts directly from a GitHub repo. A fourth reviews change requests against an internal governance checklist, flags whether a change is ready for production, and notifies stakeholders — pulling context from a ticketing system and a wiki and returning a readiness score out of 100. Integrates with Jira through MCP with OAuth.",
-    tech: ["GitHub Copilot agents", "MCP", "Python", "Databricks"],
+      "GitHub Copilot agent plugin that turns Jira stories and source-to-target mapping specs into data-engineering test cases. Integrates with Jira through MCP with OAuth.",
+    tech: ["GitHub Copilot agents", "MCP", "Jira", "Python"],
+  },
+  {
+    id: "test-notebook-generator-agent",
+    title: "Test notebook generator agent",
+    description:
+      "GitHub Copilot agent plugin that turns data-engineering test cases into runnable Databricks test notebooks.",
+    tech: ["GitHub Copilot agents", "Databricks", "Python"],
+  },
+  {
+    id: "repo-artifact-agent",
+    title: "Repo artifact assembly agent",
+    description:
+      "GitHub Copilot agent plugin that assembles the source artifacts needed for test generation directly from a GitHub repo.",
+    tech: ["GitHub Copilot agents", "GitHub", "Python"],
+  },
+  {
+    id: "change-review-agent",
+    title: "Change request review agent",
+    description:
+      "GitHub Copilot agent plugin that reviews change requests against an internal governance checklist, flags whether a change is ready for production, and notifies stakeholders — pulling context from a ticketing system and a wiki and returning a readiness score out of 100.",
+    tech: ["GitHub Copilot agents", "Python"],
   },
   {
     id: "geospatial-boundary-ingestion",
