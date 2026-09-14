@@ -15,9 +15,6 @@ export function Archive() {
               className="border-b border-ink/10 py-4 flex flex-col md:flex-row md:items-baseline md:gap-3"
             >
               <span className="font-semibold shrink-0">{item.title}</span>
-              {item.date ? (
-                <span className="font-mono text-xs uppercase tracking-wider text-ink/65 shrink-0">{item.date}</span>
-              ) : null}
               <span className="text-ink/70">{item.description}</span>
             </Reveal>
           </li>
