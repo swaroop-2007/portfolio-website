@@ -17,7 +17,6 @@ export const experience: ExperienceEntry[] = [
     company: "NavHub AI",
     role: "Founding Engineer",
     dateRange: "Nov 2024 – present",
-    location: "New York, US",
     current: true,
     bullets: [
       "Set up the product and business strategy that landed the company in the top 5% of its YC batch.",

@@ -14,25 +14,18 @@ export const selectedWork: SelectedWorkProject[] = [
     tech: ["Databricks", "Agent Bricks", "LangGraph", "Genie", "Unity Catalog", "Python"],
   },
   {
-    id: "test-case-generator-agent",
-    title: "Test case generator agent",
+    id: "test-generation-agent",
+    title: "Test generation agent",
     description:
-      "GitHub Copilot agent plugin that turns Jira stories and source-to-target mapping specs into data-engineering test cases. Integrates with Jira through MCP with OAuth.",
-    tech: ["GitHub Copilot agents", "MCP", "Jira", "Python"],
+      "GitHub Copilot agent plugin that turns Jira stories and source-to-target mapping specs into data-engineering test cases, then turns those test cases into runnable Databricks test notebooks. Integrates with Jira through MCP with OAuth.",
+    tech: ["GitHub Copilot agents", "MCP", "Jira", "Databricks", "Python"],
   },
   {
-    id: "test-notebook-generator-agent",
-    title: "Test notebook generator agent",
+    id: "repo-inventory-agent",
+    title: "Repo inventory agent",
     description:
-      "GitHub Copilot agent plugin that turns data-engineering test cases into runnable Databricks test notebooks.",
-    tech: ["GitHub Copilot agents", "Databricks", "Python"],
-  },
-  {
-    id: "repo-artifact-agent",
-    title: "Repo artifact assembly agent",
-    description:
-      "GitHub Copilot agent plugin that assembles the source artifacts needed for test generation directly from a GitHub repo.",
-    tech: ["GitHub Copilot agents", "GitHub", "Python"],
+      "GitHub Copilot agent plugin that clones a repo, extracts all of its source jobs, notebooks, and workflows, loads that inventory into a Databricks Unity Catalog table, and builds a Databricks dashboard from it — fully automated, end to end.",
+    tech: ["GitHub Copilot agents", "GitHub", "Databricks", "Unity Catalog", "Python"],
   },
   {
     id: "change-review-agent",

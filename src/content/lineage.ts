@@ -54,12 +54,7 @@ export const lineageNodes: LineageNode[] = [
     stage: "served",
     label: "AI test-generation agents",
     sectionId: "selected-work",
-    tags: [
-      "test-case-generator-agent",
-      "test-notebook-generator-agent",
-      "repo-artifact-agent",
-      "change-review-agent",
-    ],
+    tags: ["test-generation-agent", "repo-inventory-agent", "change-review-agent"],
   },
   {
     id: "geospatial-boundary-ingestion",
