@@ -4,11 +4,11 @@ import { profile } from "@/content/profile";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-const INK = "#14213d";
-const PAPER = "#f2f3f5";
-const SOURCE = "#35507a";
-const TRANSFORM = "#c97a2b";
-const SERVED = "#1f7a5c";
+const INK = "#f2f4f8";
+const PAPER = "#0a0a0a";
+const SOURCE = "#00b6db";
+const TRANSFORM = "#f6339a";
+const SERVED = "#3ddc84";
 
 export default function OpengraphImage() {
   return new ImageResponse(

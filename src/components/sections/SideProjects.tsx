@@ -20,7 +20,7 @@ export function SideProjects() {
               <h3 className="text-lg font-semibold">
                 {project.title}
                 {project.date ? (
-                  <span className="ml-2 font-mono text-xs font-normal text-ink/65">
+                  <span className="ml-2 font-mono text-xs uppercase tracking-wider font-normal text-ink/65">
                     {project.date}
                   </span>
                 ) : null}
@@ -40,7 +40,7 @@ export function SideProjects() {
                 <ExternalLink href={project.links.live}>Live</ExternalLink>
               ) : null}
               {project.todos?.map((todo) => (
-                <span key={todo} className="inline-flex items-center gap-1.5 font-mono text-xs text-ink/70">
+                <span key={todo} className="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider text-ink/70">
                   <span aria-hidden className="size-1.5 rounded-full bg-transform" />
                   TODO: {todo}
                 </span>

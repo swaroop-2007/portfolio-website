@@ -126,10 +126,25 @@ Ground the design in Swaroop's actual world: data lineage, lakehouse pipelines, 
 - The hero is a small interactive lineage graph of Swaroop's career, read left to right like a data lineage view: sources (education, early analyst roles) → transformations (skills, tools) → served outputs (current projects). Edges draw in once on page load; that is the page's single orchestrated motion moment.
 - Clicking or keyboard-focusing a node highlights its upstream and downstream path and jumps to the matching section or filters projects.
 - Everything else is quiet, disciplined, typographic. The graph is the one bold element.
+  - Palette pivot (2026-09-13, see Palette below): "quiet" no longer describes the color palette — the site moved to a dark, neon-accented look at the user's direction. The interaction model, layout discipline, and copy rules are unchanged; only the visual skin (colors, all-caps mono labels, card/wire styling) moved.
 
 Alternative concepts to offer during planning (I'll pick one):
 - **Notebook** — the page reads like a data notebook; each section is a cell, and the hero cell "runs" once to render the intro.
 - **Territory map** — geospatial-inspired; projects plotted as regions on an abstract boundary map.
+
+### Palette (revised 2026-09-13)
+Pivoted from the original light palette to a dark, neon-accented one, at the user's explicit direction, after reviewing https://www.shafiab.com as a reference. Chosen deliberately, aware it reverses part of the Avoid list below — see the annotations there.
+
+| Token | Hex | Role |
+|---|---|---|
+| ink | `#f2f4f8` | Primary text (off-white) |
+| paper | `#0a0a0a` | Background (near-black), with a faint 48px grid overlay (`body` in `globals.css`) |
+| source | `#00b6db` | Cyan — sources/education lineage nodes |
+| transform | `#f6339a` | Pink/magenta — transformation/skill lineage nodes |
+| served | `#3ddc84` | Neon green — served/output lineage nodes |
+| focus | `#ffd60a` | Amber — keyboard focus ring only, kept distinct from the three data colors |
+
+Lineage nodes (`LineageNode.tsx`) are square-cornered bordered boxes with a small corner accent dot in the node's stage color and a soft glow on activation. Connector lines (`LineageGraph.tsx`) are right-angle (orthogonal) wires, not diagonals, colored by destination stage when highlighted. `ScrollHighlightText.tsx` adds a continuous scroll-scrubbed word-highlight effect (words go from dim to fully lit as the block scrolls through the viewport) — distinct from `Reveal.tsx`'s reveal-once-on-enter — currently used on the hero's positioning line.
 
 ### Process
 1. Produce a design plan before code: 4–6 named hex colors, 1–2 typefaces with roles and a clear type scale, ASCII wireframes for desktop and mobile, and alignment rules.
@@ -137,9 +152,12 @@ Alternative concepts to offer during planning (I'll pick one):
 3. Then build.
 
 ### Avoid (generic defaults)
-- Cream background with serif display and terracotta accent; near-black with a single acid-green accent
+- Cream background with serif display and terracotta accent
+  - Reversed in part (2026-09-13, user direction): near-black with a neon accent is now the site's actual background/palette choice — see Palette above. Adopted deliberately from a reference site, not a drift.
 - Grids of identical rounded cards with the same soft shadow; gradient washes as decoration
-- All-caps eyebrow labels above headings; one highlighted word in a headline; "→" appended to every link
+- All-caps eyebrow labels above headings
+  - Reversed (2026-09-13): all-caps monospace labels are now used throughout (tech tags, dates, category headers, node subtitles), as part of the same palette pivot.
+- One highlighted word in a headline; "→" appended to every link — still avoided, not part of the pivot
 - Heavy fade-and-slide-up (40–60px travel, 600–800ms) as a uniform page-wide cascade; hover animations on every card
   - Exception (added post-launch): a subtle once-per-row scroll reveal is intentional — ~8px rise, ~300ms, opacity + transform only, staggered only within a section's own rows (never a delay cascade down the whole page), implemented in `src/components/ui/Reveal.tsx`. This is deliberately distinct from the generic version above.
 - 01 / 02 / 03 numbering unless the content is truly a sequence (the experience timeline is; projects are not)

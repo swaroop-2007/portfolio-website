@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  --color-ink: #14213d;
-  --color-paper: #f2f3f5;
-  --color-source: #35507a;
-  --color-transform: #c97a2b;
-  --color-served: #1f7a5c;
-  --color-focus: #6e42d1;
+  --color-ink: #f2f4f8;
+  --color-paper: #0a0a0a;
+  --color-source: #00b6db;
+  --color-transform: #f6339a;
+  --color-served: #3ddc84;
+  --color-focus: #ffd60a;
 }
 
 @theme inline {
@@ -19,6 +19,13 @@
 
   --font-sans: var(--font-plex-sans);
   --font-mono: var(--font-plex-mono);
+}
+
+:root {
+  --glow-source: color-mix(in srgb, var(--color-source) 40%, transparent);
+  --glow-transform: color-mix(in srgb, var(--color-transform) 40%, transparent);
+  --glow-served: color-mix(in srgb, var(--color-served) 40%, transparent);
+  --grid-line: color-mix(in srgb, var(--color-ink) 6%, transparent);
 }
 
 * {
@@ -43,7 +50,11 @@ html {
 }
 
 body {
-  background: var(--color-paper);
+  background-color: var(--color-paper);
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 48px 48px;
   color: var(--color-ink);
   font-family: var(--font-sans);
 }

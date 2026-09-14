@@ -2,10 +2,25 @@ import type { LineageNode as LineageNodeType } from "@/lib/types";
 
 export type LineageNodeStatus = "idle" | "active" | "connected" | "dimmed";
 
-const STAGE_STYLE: Record<LineageNodeType["stage"], { active: string; connected: string }> = {
-  source: { active: "border-source border-2 bg-source/5", connected: "border-source/60" },
-  transform: { active: "border-transform border-2 bg-transform/5", connected: "border-transform/60" },
-  served: { active: "border-served border-2 bg-served/5", connected: "border-served/60" },
+const STAGE_STYLE: Record<
+  LineageNodeType["stage"],
+  { active: string; connected: string; dot: string }
+> = {
+  source: {
+    active: "border-source shadow-[0_0_18px_var(--glow-source)] bg-source/10",
+    connected: "border-source/60",
+    dot: "bg-source",
+  },
+  transform: {
+    active: "border-transform shadow-[0_0_18px_var(--glow-transform)] bg-transform/10",
+    connected: "border-transform/60",
+    dot: "bg-transform",
+  },
+  served: {
+    active: "border-served shadow-[0_0_18px_var(--glow-served)] bg-served/10",
+    connected: "border-served/60",
+    dot: "bg-served",
+  },
 };
 
 export function LineageNode({
@@ -20,6 +35,7 @@ export function LineageNode({
   onActivate: () => void;
 }) {
   const stage = STAGE_STYLE[node.stage];
+  const isHighlighted = status === "active" || status === "connected";
   const stateClass =
     status === "active"
       ? stage.active
@@ -36,11 +52,17 @@ export function LineageNode({
       data-lineage-node={node.id}
       onClick={onActivate}
       onFocus={onActivate}
-      className={`block rounded border bg-paper px-3 py-2 transition-colors ${stateClass}`}
+      className={`relative block border bg-paper px-3 py-2 transition-[border-color,box-shadow,background-color,opacity] ${stateClass}`}
     >
-      <div className="text-sm font-semibold leading-snug">{node.label}</div>
+      <span
+        aria-hidden
+        className={`absolute top-1.5 right-1.5 size-1.5 rounded-full ${isHighlighted ? stage.dot : "bg-ink/20"}`}
+      />
+      <div className="text-sm font-semibold leading-snug pr-3">{node.label}</div>
       {node.sublabel ? (
-        <div className="font-mono text-[0.6875rem] text-ink/70 mt-0.5">{node.sublabel}</div>
+        <div className="font-mono text-[0.6875rem] uppercase tracking-wider text-ink/70 mt-0.5">
+          {node.sublabel}
+        </div>
       ) : null}
     </a>
   );

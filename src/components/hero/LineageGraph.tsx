@@ -12,12 +12,17 @@ const STAGES: { key: LineageStage; label: string }[] = [
   { key: "served", label: "served" },
 ];
 
+const STAGE_COLOR_VAR: Record<LineageStage, string> = {
+  source: "var(--color-source)",
+  transform: "var(--color-transform)",
+  served: "var(--color-served)",
+};
+
 interface EdgeLine {
   key: string;
-  x1: number;
-  y1: number;
-  x2: number;
-  y2: number;
+  path: string;
+  length: number;
+  toStage: LineageStage;
 }
 
 export function LineageGraph() {
@@ -41,12 +46,17 @@ export function LineageGraph() {
       if (!fromEl || !toEl) continue;
       const fromRect = fromEl.getBoundingClientRect();
       const toRect = toEl.getBoundingClientRect();
+      const x1 = fromRect.right - containerRect.left;
+      const y1 = fromRect.top + fromRect.height / 2 - containerRect.top;
+      const x2 = toRect.left - containerRect.left;
+      const y2 = toRect.top + toRect.height / 2 - containerRect.top;
+      const midX = (x1 + x2) / 2;
+      const toStage = lineageNodes.find((n) => n.id === edge.to)?.stage ?? "served";
       lines.push({
         key: `${edge.from}->${edge.to}`,
-        x1: fromRect.right - containerRect.left,
-        y1: fromRect.top + fromRect.height / 2 - containerRect.top,
-        x2: toRect.left - containerRect.left,
-        y2: toRect.top + toRect.height / 2 - containerRect.top,
+        path: `M ${x1} ${y1} H ${midX} V ${y2} H ${x2}`,
+        length: Math.abs(midX - x1) + Math.abs(y2 - y1) + Math.abs(x2 - midX),
+        toStage,
       });
     }
     setEdgeLines(lines);
@@ -93,23 +103,20 @@ export function LineageGraph() {
         aria-hidden
         className="hidden md:block absolute inset-0 w-full h-full pointer-events-none overflow-visible"
       >
-        {edgeLines.map((line) => {
-          const isConnected = connectedEdgeKeys.has(line.key);
+        {edgeLines.map((edge) => {
+          const isConnected = connectedEdgeKeys.has(edge.key);
           const isDimmed = activeNodeId !== null && !isConnected;
-          const length = Math.hypot(line.x2 - line.x1, line.y2 - line.y1);
           return (
-            <line
-              key={line.key}
-              x1={line.x1}
-              y1={line.y1}
-              x2={line.x2}
-              y2={line.y2}
-              stroke="var(--color-ink)"
-              strokeOpacity={isConnected ? 0.9 : isDimmed ? 0.08 : 0.18}
+            <path
+              key={edge.key}
+              d={edge.path}
+              fill="none"
+              stroke={isConnected ? STAGE_COLOR_VAR[edge.toStage] : "var(--color-ink)"}
+              strokeOpacity={isConnected ? 0.9 : isDimmed ? 0.06 : 0.18}
               strokeWidth={isConnected ? 1.5 : 1}
-              strokeDasharray={length}
-              strokeDashoffset={drawn ? 0 : length}
-              style={{ transition: "stroke-dashoffset 700ms ease, stroke-opacity 200ms ease" }}
+              strokeDasharray={edge.length}
+              strokeDashoffset={drawn ? 0 : edge.length}
+              style={{ transition: "stroke-dashoffset 700ms ease, stroke-opacity 200ms ease, stroke 200ms ease" }}
             />
           );
         })}
@@ -117,7 +124,7 @@ export function LineageGraph() {
 
       {STAGES.map((stage) => (
         <div key={stage.key} className="relative flex flex-col gap-3">
-          <h2 className="font-mono text-xs text-ink/65">{stage.label}</h2>
+          <h2 className="font-mono text-xs uppercase tracking-wider text-ink/65">{stage.label}</h2>
           <div className="flex flex-col gap-3">
             {lineageNodes
               .filter((node) => node.stage === stage.key)

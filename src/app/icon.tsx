@@ -3,10 +3,10 @@ import { ImageResponse } from "next/og";
 export const size = { width: 32, height: 32 };
 export const contentType = "image/png";
 
-const INK = "#14213d";
-const SOURCE = "#35507a";
-const TRANSFORM = "#c97a2b";
-const SERVED = "#1f7a5c";
+const INK = "#f2f4f8";
+const SOURCE = "#00b6db";
+const TRANSFORM = "#f6339a";
+const SERVED = "#3ddc84";
 
 export default function Icon() {
   return new ImageResponse(
@@ -18,7 +18,7 @@ export default function Icon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "#f2f3f5",
+          background: "#0a0a0a",
           borderRadius: 6,
         }}
       >
