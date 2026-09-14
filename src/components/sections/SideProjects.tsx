@@ -2,15 +2,17 @@ import { sideProjects } from "@/content/sideProjects";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { TechTag } from "@/components/ui/TechTag";
 import { ExternalLink } from "@/components/ui/ExternalLink";
+import { Reveal } from "@/components/ui/Reveal";
 
 export function SideProjects() {
   return (
     <section id="side-projects" className="py-16 md:py-24">
       <SectionHeading title="Side projects" description="Featured personal builds." />
       <div className="border-t border-ink/10">
-        {sideProjects.map((project) => (
-          <div
+        {sideProjects.map((project, index) => (
+          <Reveal
             key={project.id}
+            delay={Math.min(index * 40, 160)}
             className="border-b border-ink/10 py-6 md:py-8 flex flex-col gap-3"
           >
             <div className="flex items-start gap-3">
@@ -44,7 +46,7 @@ export function SideProjects() {
                 </span>
               ))}
             </div>
-          </div>
+          </Reveal>
         ))}
       </div>
     </section>

@@ -140,7 +140,8 @@ Alternative concepts to offer during planning (I'll pick one):
 - Cream background with serif display and terracotta accent; near-black with a single acid-green accent
 - Grids of identical rounded cards with the same soft shadow; gradient washes as decoration
 - All-caps eyebrow labels above headings; one highlighted word in a headline; "→" appended to every link
-- Fade-and-slide-up on every section; hover animations on every card
+- Heavy fade-and-slide-up (40–60px travel, 600–800ms) as a uniform page-wide cascade; hover animations on every card
+  - Exception (added post-launch): a subtle once-per-row scroll reveal is intentional — ~8px rise, ~300ms, opacity + transform only, staggered only within a section's own rows (never a delay cascade down the whole page), implemented in `src/components/ui/Reveal.tsx`. This is deliberately distinct from the generic version above.
 - 01 / 02 / 03 numbering unless the content is truly a sequence (the experience timeline is; projects are not)
 - Default font choices (Inter, Roboto, system stack) unless justified in the plan
 
